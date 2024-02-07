@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -19,5 +20,28 @@ public class ClienteService {
 
     public Cliente criaCliente(Cliente cliente) {
         return repository.save(cliente);
+    }
+
+    public Cliente atualizaCliente(Long id, Cliente clienteAtualizado) {
+        Optional<Cliente> optionalCliente = repository.findById(id);
+
+        if (optionalCliente.isPresent()) {
+            Cliente cliente = optionalCliente.get();
+            cliente.setNome(clienteAtualizado.getNome());
+            cliente.setCpf(clienteAtualizado.getCpf());
+            return repository.save(cliente);
+        } else {
+            throw new RuntimeException("Cliente não encontrado com o ID: " + id);
+        }
+    }
+
+    public void deletaCliente(Long id) {
+        Optional<Cliente> optionalCliente = repository.findById(id);
+
+        if (optionalCliente.isPresent()) {
+            repository.deleteById(id);
+        } else {
+            throw new RuntimeException("Cliente não encontrado com o ID: " + id);
+        }
     }
 }

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class ProdutoDto {
 
-    private Long id;
+    private Long idProduto;
 
     private Long codigo;
 

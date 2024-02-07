@@ -7,13 +7,14 @@ import lombok.Setter;
 
 import java.util.Date;
 
-@Entity(name = "Cliente")
+@Entity
+@Table(name = "cliente")
 @Getter
 @Setter
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idCliente;
 
     private String nome;
 
