@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "venda")
@@ -14,10 +15,17 @@ public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVenda;
+
     private Double valorTotal;
-    private Date data;
+
+    private Date dataVenda;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_venda", referencedColumnName = "idVenda")
+    private List<VendaProduto> vendaProdutos;
+
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "idCliente", insertable = false, updatable = false)
+    @JoinColumn(name = "id_cliente", referencedColumnName = "idCliente")
     private Cliente cliente;
 }

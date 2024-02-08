@@ -21,10 +21,6 @@ public class ClienteController {
     @Autowired
     private ClienteAssembly assembly;
 
-    @GetMapping(value = "/todos")
-    public ResponseEntity<List<ClienteDto>> devolveCliente() {
-        return ResponseEntity.ok(assembly.converterParaDto(service.devolveClientes()));
-    }
 
     @PostMapping(value = "/salva")
     public ResponseEntity<Cliente> salvaIProduto(@RequestBody ClienteDto clientesalvo) {

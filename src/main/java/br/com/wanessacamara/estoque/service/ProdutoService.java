@@ -40,7 +40,7 @@ public class ProdutoService {
         if (optionalProduto.isPresent()) {
             Produto produto = optionalProduto.get();
             produto.setCodigo(produtoAtualizado.getCodigo());
-            produto.setNome(produtoAtualizado.getNome());
+            produto.setNomeProduto(produtoAtualizado.getNomeProduto());
             produto.setPreco(produtoAtualizado.getPreco());
             return repository.save(produto);
         } else {

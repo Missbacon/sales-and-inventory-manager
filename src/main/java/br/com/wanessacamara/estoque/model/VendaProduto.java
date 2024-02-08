@@ -12,12 +12,10 @@ public class VendaProduto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idLista;
-    private Integer quantidadeVenda;
-    private Double valorProdutoTotal;
 
-    @ManyToOne
-    @JoinColumn(name = "id_venda", referencedColumnName = "idVenda", insertable = false, updatable = false)
-    private Venda venda;
+    private Integer quantidadeVenda;
+
+
 
     @ManyToOne
     @JoinColumn(name = "id_produto", referencedColumnName = "idProduto", insertable = false, updatable = false)

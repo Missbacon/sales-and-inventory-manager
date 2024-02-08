@@ -11,7 +11,7 @@ public class ProdutoDto {
 
     private Long codigo;
 
-    private String nome;
+    private String nomeProduto;
 
     private Double preco;
 }

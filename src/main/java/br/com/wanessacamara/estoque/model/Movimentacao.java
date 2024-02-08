@@ -11,16 +11,14 @@ import lombok.Setter;
 public class Movimentacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long id_entrada;
-    private Long id_venda_produto;
+    private Long idMovimentacao;
 
     @ManyToOne
     @JoinColumn(name = "id_entrada", referencedColumnName = "idEntrada", insertable = false, updatable = false)
-    private Entrada entrada;
+    private Entrada idEntrada;
 
     @ManyToOne
     @JoinColumn(name = "id_venda_produto", referencedColumnName = "idLista", insertable = false, updatable = false)
-    private VendaProduto vendaProduto;
+    private VendaProduto idVendaProduto;
 
 }

@@ -30,4 +30,12 @@ public class ProdutoController {
         return ResponseEntity.created(null).body(service.criaProduto(assembly.converterParaEntity(itemsalvo)));
     }
 
+    @PutMapping(value = "/atualiza/{idProduto}")
+    public ResponseEntity<Produto> atualizaProduto(@PathVariable Long idProduto, @RequestBody ProdutoDto produtoDto) {
+        Produto produtoAtualizado = assembly.converterParaEntity(produtoDto);
+        Produto produto = service.atualizaProduto(idProduto, produtoAtualizado);
+        return ResponseEntity.ok(produto);
+    }
+
+
 }
