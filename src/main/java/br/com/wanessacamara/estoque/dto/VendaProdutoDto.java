@@ -13,6 +13,6 @@ public class VendaProdutoDto {
     private Integer quantidadeVenda;
     private Double valorProdutoTotal;
     private Venda idVenda;
-    private Produto idProduto;
+    private Produto codigo;
 
 }

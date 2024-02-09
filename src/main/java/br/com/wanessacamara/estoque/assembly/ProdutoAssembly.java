@@ -12,7 +12,6 @@ public class ProdutoAssembly {
         Produto entity = new Produto();
         entity.setCodigo(dto.getCodigo());
         entity.setNomeProduto(dto.getNomeProduto());
-        entity.setIdProduto(dto.getIdProduto());
         entity.setPreco(dto.getPreco());
         return entity;
     }
@@ -21,7 +20,6 @@ public class ProdutoAssembly {
         ProdutoDto dto = new ProdutoDto();
         dto.setCodigo(entity.getCodigo());
         dto.setNomeProduto(entity.getNomeProduto());
-        dto.setIdProduto(entity.getIdProduto());
         dto.setPreco(entity.getPreco());
         return dto;
     }

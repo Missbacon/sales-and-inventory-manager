@@ -28,11 +28,11 @@ public class VendaService {
         return repository.save(venda);
     }
 
-    public List<Venda> consultaVenda(Integer mes){
+   /* public List<Venda> consultaVenda(Integer mes){
         Date dataInicial = Date.from(Instant.now());
         dataInicial.setMonth(mes);
         dataInicial.setDate(1);
         Date dataFinal = new Date(dataInicial.getYear(),mes , 31);
         return repository.findByStartDateBetween(dataInicial , dataFinal);
-    }
+    }*/
 }

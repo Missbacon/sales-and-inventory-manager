@@ -16,8 +16,7 @@ public class ClienteAssembly {
         Cliente entity = new Cliente();
         entity.setNome(dto.getNome());
         entity.setCpf(dto.getCpf());
-        entity.setIdCliente(dto.getIdCliente());
-        entity.setEndereco(dto.getEndereco());
+        entity.setCep(dto.getCep());
         entity.setDataDeNascimento(dto.getDataDeNascimento());
         return entity;
     }
@@ -26,8 +25,7 @@ public class ClienteAssembly {
         ClienteDto dto = new ClienteDto();
         dto.setNome(entity.getNome());
         dto.setCpf(entity.getCpf());
-        dto.setIdCliente(entity.getIdCliente());
-        dto.setEndereco(entity.getEndereco());
+        dto.setCep(entity.getCep());
         dto.setDataDeNascimento(entity.getDataDeNascimento());
         return dto;
     }

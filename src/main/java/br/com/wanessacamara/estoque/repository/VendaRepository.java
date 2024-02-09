@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface VendaRepository extends JpaRepository<Venda, Long> {
-    List<Venda> findByStartDateBetween(Date from, Date to);
+
 
 }

@@ -18,7 +18,7 @@ public class VendaProduto {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_produto", referencedColumnName = "idProduto", insertable = false, updatable = false)
+    @JoinColumn(name = "codigo", referencedColumnName = "codigo", insertable = false, updatable = false)
     private Produto produto;
 }
 

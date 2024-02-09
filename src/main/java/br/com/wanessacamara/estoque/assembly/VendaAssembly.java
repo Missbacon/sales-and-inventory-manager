@@ -13,7 +13,7 @@ public class VendaAssembly {
         entity.setIdVenda(dto.getIdVenda());
         entity.setDataVenda(dto.getDataVenda());
         entity.setValorTotal(dto.getValorTotal());
-        entity.setCliente(dto.getIdCliente());
+        entity.setCliente(dto.getCpf());
         return entity;
     }
     public VendaDto converterParaDto (Venda entity) {
@@ -21,7 +21,7 @@ public class VendaAssembly {
         dto.setIdVenda(entity.getIdVenda());
         dto.setDataVenda(entity.getDataVenda());
         dto.setValorTotal(entity.getValorTotal());
-        dto.setIdCliente(entity.getCliente());
+        dto.setCpf(entity.getCliente());
         return dto;
     }
 

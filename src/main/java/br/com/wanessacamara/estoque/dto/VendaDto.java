@@ -12,5 +12,5 @@ public class VendaDto {
     private Long idVenda;
     private Double valorTotal;
     private Date dataVenda;
-    private Cliente idCliente;
+    private Cliente cpf;
 }

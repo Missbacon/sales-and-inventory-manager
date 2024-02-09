@@ -1,9 +1,5 @@
 package br.com.wanessacamara.estoque.dto;
 
-import br.com.wanessacamara.estoque.model.comum.Endereco;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +9,6 @@ import java.util.Date;
 @Setter
 public class ClienteDto {
 
-    private Long idCliente;
 
     private String nome;
 
@@ -21,5 +16,5 @@ public class ClienteDto {
 
     private String cpf;
 
-    private Endereco endereco;
+    private String cep;
 }

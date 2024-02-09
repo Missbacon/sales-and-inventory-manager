@@ -6,6 +6,7 @@ import br.com.wanessacamara.estoque.repository.ClienteRepository;
 import br.com.wanessacamara.estoque.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,26 +23,32 @@ public class ClienteService {
         return repository.save(cliente);
     }
 
-    public Cliente atualizaCliente(Long id, Cliente clienteAtualizado) {
-        Optional<Cliente> optionalCliente = repository.findById(id);
+    public void atualizarCliente(Cliente cliente) {
+        repository.save(cliente);
+    }
 
+    public Cliente buscarClientePorCpf(String cpf) {
+        // Realiza a consulta no banco de dados usando o repository
+        Optional<Cliente> optionalCliente = repository.findByCpf(cpf);
+
+        // Verifica se o cliente foi encontrado
         if (optionalCliente.isPresent()) {
-            Cliente cliente = optionalCliente.get();
-            cliente.setNome(clienteAtualizado.getNome());
-            cliente.setCpf(clienteAtualizado.getCpf());
-            return repository.save(cliente);
+            return optionalCliente.get(); // Retorna o cliente encontrado
         } else {
-            throw new RuntimeException("Cliente não encontrado com o ID: " + id);
+            return null; // Retorna null se nenhum cliente foi encontrado
         }
     }
 
-    public void deletaCliente(Long id) {
-        Optional<Cliente> optionalCliente = repository.findById(id);
+    public Cliente buscarClientePorId(Long id) {
+        Optional<Cliente> clienteOptional = repository.findById(id);
+        return clienteOptional.orElse(null);
+    }
 
-        if (optionalCliente.isPresent()) {
-            repository.deleteById(id);
-        } else {
-            throw new RuntimeException("Cliente não encontrado com o ID: " + id);
-        }
+    @Transactional
+    public void deletarCliente(Cliente cliente) {
+        repository.delete(cliente);
     }
 }
+
+
+

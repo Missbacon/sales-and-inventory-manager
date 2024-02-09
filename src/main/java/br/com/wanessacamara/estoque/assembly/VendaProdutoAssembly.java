@@ -10,7 +10,7 @@ import java.util.List;
 public class VendaProdutoAssembly {
     public VendaProduto converterParaEntity(VendaProdutoDto dto) {
         VendaProduto entity = new VendaProduto();
-        entity.setProduto(dto.getIdProduto());
+        entity.setProduto(dto.getCodigo());
         entity.setQuantidadeVenda(dto.getQuantidadeVenda());
         entity.setIdLista(dto.getIdLista());
         return entity;
@@ -18,7 +18,7 @@ public class VendaProdutoAssembly {
 
     public VendaProdutoDto converterParaDto(VendaProduto entity) {
         VendaProdutoDto dto = new VendaProdutoDto();
-        dto.setIdProduto(entity.getProduto());
+        dto.setCodigo(entity.getProduto());
         dto.setQuantidadeVenda(entity.getQuantidadeVenda());
         dto.setIdLista(entity.getIdLista());
         return dto;

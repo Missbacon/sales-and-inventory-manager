@@ -21,11 +21,11 @@ public class VendaController {
     @Autowired
     private VendaAssembly vendaAssembly;
 
-    @GetMapping("/{mes}")
+    /*@GetMapping("/{mes}")
     public ResponseEntity<List<VendaDto>> relatorioVendas(@PathVariable Integer mes){
         return ResponseEntity.ok(vendaAssembly.converterParaDto(vendaService.consultaVenda(mes)));
 
-    }
+    }*/
 
 
 }

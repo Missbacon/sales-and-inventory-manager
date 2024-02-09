@@ -22,6 +22,6 @@ public class Entrada {
         private Date dataEntrada;
 
         @ManyToOne
-        @JoinColumn(name = "id_produto", referencedColumnName = "idProduto", insertable = false, updatable = false)
+        @JoinColumn(name = "codido", referencedColumnName = "codigo", insertable = false, updatable = false)
         private Produto produto;
 }
