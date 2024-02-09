@@ -28,7 +28,9 @@ public class ProdutoAssembly {
         return dtos.stream().map(dto -> this.converterParaEntity(dto)).toList();
     }
 
-    public  List<ProdutoDto> converterParaDto(List<Produto> entities) {
+    public List<ProdutoDto> converterParaDto(List<Produto> entities) {
         return entities.stream().map(entity -> this.converterParaDto(entity)).toList();
     }
 }
+
+

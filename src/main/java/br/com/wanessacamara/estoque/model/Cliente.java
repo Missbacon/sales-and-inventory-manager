@@ -1,8 +1,12 @@
 package br.com.wanessacamara.estoque.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.Date;
 
@@ -12,11 +16,22 @@ import java.util.Date;
 @Setter
 public class Cliente {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @NotEmpty(message = "Deve conter um cpf")
+    @Size(min = 11, max = 11, message = "O cpf deve conter 11 caracteres")
+    @Column(unique = true, nullable = false)
     private String cpf;
+
 
     private String nome;
 
+
     private Date dataDeNascimento;
 
+    @NotEmpty
+    @Size(min = 8, max = 8)
+    @Column(nullable = false)
     private String cep;
 }

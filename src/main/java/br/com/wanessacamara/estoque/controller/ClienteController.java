@@ -26,16 +26,9 @@ public class ClienteController {
 
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<String> cadastrarCliente(@RequestBody ClienteDto cliente) {
-        // Verifica se já existe um cliente com o mesmo CPF
-        Cliente clienteExistente = service.buscarClientePorCpf(cliente.getCpf());
-        if (clienteExistente != null) {
-
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Já existe um cliente com o CPF fornecido.");
-        }
-
-        service.criaCliente(assembly.converterParaEntity(cliente));
-        return ResponseEntity.ok("Cliente cadastrado com sucesso.");
+    public ResponseEntity<ClienteDto> cadastrarCliente(@RequestBody ClienteDto cliente) {
+        cliente = assembly.converterParaDto(service.criaCliente(assembly.converterParaEntity(cliente)));
+        return ResponseEntity.ok(cliente);
     }
 
     @GetMapping("/{id}")
@@ -57,7 +50,7 @@ public class ClienteController {
 
         // Atualiza os dados do cliente com base nos dados fornecidos no DTO
         clienteExistente.setNome(clienteDto.getNome());
-        clienteExistente.setDataDeNascimento(clienteDto.getDataDeNascimento());
+      //  clienteExistente.setDataDeNascimento(clienteDto.getDataDeNascimento());
         clienteExistente.setCep(clienteDto.getCep());
 
         // Salva as alterações no banco de dados
@@ -73,7 +66,6 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
         }
 
-        // Chama o serviço para deletar o cliente
         service.deletarCliente(clienteExistente);
 
         return ResponseEntity.ok("Cliente deletado com sucesso.");
