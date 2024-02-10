@@ -1,6 +1,8 @@
 package br.com.wanessacamara.estoque.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,10 +14,15 @@ import lombok.Setter;
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
     private Long codigo;
 
+    @NotEmpty
     private String nomeProduto;
 
+    @NotNull
     private Double preco;
 
 

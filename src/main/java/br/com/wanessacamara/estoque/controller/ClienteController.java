@@ -9,10 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
@@ -27,48 +23,44 @@ public class ClienteController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<ClienteDto> cadastrarCliente(@RequestBody ClienteDto cliente) {
-        cliente = assembly.converterParaDto(service.criaCliente(assembly.converterParaEntity(cliente)));
+        cliente = assembly.converterParaDto(service.cadastraCliente(assembly.converterParaEntity(cliente)));
         return ResponseEntity.ok(cliente);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Long id) {
+    public ResponseEntity<?> buscarClientePorId(@PathVariable Long id) {
         Cliente cliente = service.buscarClientePorId(id);
         if (cliente == null) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente com o ID " + id + " não encontrado");
         }
         return ResponseEntity.ok(cliente);
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<String> atualizarCliente(@PathVariable Long id, @RequestBody ClienteDto clienteDto) {
-        // Verifica se o cliente existe no banco de dados
+    public ResponseEntity<?> atualizarCliente(@PathVariable Long id, @RequestBody ClienteDto clienteDto) {
+
         Cliente clienteExistente = service.buscarClientePorId(id);
         if (clienteExistente == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente com o ID " + id + " não encontrado");
         }
 
-        // Atualiza os dados do cliente com base nos dados fornecidos no DTO
         clienteExistente.setNome(clienteDto.getNome());
-      //  clienteExistente.setDataDeNascimento(clienteDto.getDataDeNascimento());
         clienteExistente.setCep(clienteDto.getCep());
-
-        // Salva as alterações no banco de dados
         service.atualizarCliente(clienteExistente);
 
-        return ResponseEntity.ok("Cliente atualizado com sucesso.");
+        return ResponseEntity.ok(clienteExistente);
     }
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<String> deletarCliente(@PathVariable Long id) {
-        // Verifica se o cliente existe no banco de dados
+    public ResponseEntity<?> deletarCliente(@PathVariable Long id) {
+
         Cliente clienteExistente = service.buscarClientePorId(id);
         if (clienteExistente == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente com o ID " + id + " não encontrado");
         }
 
         service.deletarCliente(clienteExistente);
 
-        return ResponseEntity.ok("Cliente deletado com sucesso.");
+        return ResponseEntity.ok(clienteExistente);
     }
 }
 

@@ -61,4 +61,8 @@ public class ProdutoService {
     public void deletarProduto(Produto produto) {
         repository.delete(produto);
     }
+
+    public Produto cadastraProduto(Produto produto) {
+        return repository.save(produto);
+    }
 }

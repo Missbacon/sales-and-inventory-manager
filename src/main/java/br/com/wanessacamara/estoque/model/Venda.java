@@ -26,6 +26,6 @@ public class Venda {
 
 
     @ManyToOne
-    @JoinColumn(name = "cpf", referencedColumnName = "cpf")
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private Cliente cliente;
 }
