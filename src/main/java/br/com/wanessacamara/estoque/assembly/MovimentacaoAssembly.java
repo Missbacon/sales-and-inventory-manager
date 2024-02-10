@@ -10,10 +10,10 @@ import java.util.List;
 public class MovimentacaoAssembly {
 
 
-    public Movimentacao  converterParaEntity(MovimentacaoDto dto) {
+    /*public Movimentacao  converterParaEntity(MovimentacaoDto dto) {
          Movimentacao entity = new Movimentacao();
 
-         entity.setIdMovimentacao (dto.getIdMovimentacao());
+        entity.setIdMovimentacao (dto.getIdMovimentacao());
          entity.setIdEntrada(entity.getIdEntrada());
          entity.setIdVendaProduto(entity.getIdVendaProduto());
          return entity;
@@ -34,5 +34,5 @@ public class MovimentacaoAssembly {
 
     public  List<MovimentacaoDto> converterParaDto(List<Movimentacao> entities) {
         return entities.stream().map(entity -> this.converterParaDto(entity)).toList();
-    }
+    */
 }

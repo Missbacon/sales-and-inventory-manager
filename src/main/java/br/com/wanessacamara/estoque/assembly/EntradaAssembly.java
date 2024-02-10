@@ -13,20 +13,22 @@ public class EntradaAssembly {
     public Entrada converterParaEntity(EntradaDto dto) {
         Entrada entity = new Entrada();
 
-        entity.setIdEntrada(dto.getIdEntrada());
-        entity.setDataEntrada(dto.getDataEntrada());
-        entity.setQuantidadeEntrada(dto.getQuantidadeEntrada());
-        entity.setProduto(dto.getProduto());
+        entity.setId(dto.getIdEntrada());
+        entity.setMes(dto.getMes());
+        entity.setAno(dto.getAno());
+        entity.setQuantidade(dto.getQuantidadeEntrada());
+        //entity.setProduto(dto.getProduto());
         return entity;
     }
 
     public EntradaDto converterParaDto(Entrada entity) {
         EntradaDto  dto = new EntradaDto();
 
-        dto.setIdEntrada(entity.getIdEntrada());
-        dto.setDataEntrada(entity.getDataEntrada());
-        dto.setQuantidadeEntrada(entity.getQuantidadeEntrada());
-        dto.setProduto(entity.getProduto());
+        dto.setIdEntrada(entity.getId());
+        dto.setMes(entity.getMes());
+        dto.setAno(entity.getAno());
+        dto.setQuantidadeEntrada(entity.getQuantidade());
+       // dto.setProduto(entity.getProduto());
         return dto;
     }
 

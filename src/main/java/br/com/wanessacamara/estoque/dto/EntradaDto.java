@@ -11,7 +11,11 @@ import java.util.Date;
 public class EntradaDto {
 
     private Long idEntrada;
+
     private Integer quantidadeEntrada;
-    private Date dataEntrada;
-    private Produto produto;
+
+    private Integer mes;
+
+    private Integer ano;
+
 }

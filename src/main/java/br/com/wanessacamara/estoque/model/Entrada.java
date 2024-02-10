@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 
 @Entity
 @Table(name = "entrada")
@@ -17,11 +15,12 @@ public class Entrada {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY )
-        private Long idEntrada;
-        private Integer quantidadeEntrada;
-        private Date dataEntrada;
+        private Long id;
+        private Integer quantidade;
+        private Integer mes;
+        private Integer ano;
 
-        @ManyToOne
-        @JoinColumn(name = "codido", referencedColumnName = "codigo", insertable = false, updatable = false)
-        private Produto produto;
+
+
+
 }

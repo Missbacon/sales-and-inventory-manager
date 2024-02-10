@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+/*@Entity
 @Table(name = "venda_produto")
 @Setter
 @Getter
@@ -21,4 +21,4 @@ public class VendaProduto {
     @JoinColumn(name = "codigo", referencedColumnName = "codigo", insertable = false, updatable = false)
     private Produto produto;
 }
-
+*/

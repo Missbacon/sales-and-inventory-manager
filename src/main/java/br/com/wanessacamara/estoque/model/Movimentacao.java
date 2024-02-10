@@ -13,12 +13,12 @@ public class Movimentacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMovimentacao;
 
-    @ManyToOne
-    @JoinColumn(name = "id_entrada", referencedColumnName = "idEntrada", insertable = false, updatable = false)
-    private Entrada idEntrada;
+   /* @ManyToOne
+    @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Entrada id;*/
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "id_venda_produto", referencedColumnName = "idLista", insertable = false, updatable = false)
-    private VendaProduto idVendaProduto;
+    private VendaProduto idVendaProduto;*/
 
 }
