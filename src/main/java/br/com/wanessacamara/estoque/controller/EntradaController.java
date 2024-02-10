@@ -39,6 +39,6 @@ public class EntradaController {
         return ResponseEntity.ok(entradaProduto);
     }
 
-    
+
 
 }
