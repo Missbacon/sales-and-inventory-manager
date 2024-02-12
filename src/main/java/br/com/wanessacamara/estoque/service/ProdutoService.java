@@ -65,4 +65,14 @@ public class ProdutoService {
     public Produto cadastraProduto(Produto produto) {
         return repository.save(produto);
     }
+
+    public String obterNomeProdutoPorCodigo(Long codigoProduto) {
+        Optional<Produto> produtoOptional = repository.findById(codigoProduto);
+        if (produtoOptional.isPresent()) {
+            Produto produto = produtoOptional.get();
+            return produto.getNomeProduto();
+        } else {
+            return null; //
+        }
+    }
 }

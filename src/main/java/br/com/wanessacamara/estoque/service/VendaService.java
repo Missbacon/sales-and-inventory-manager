@@ -1,5 +1,6 @@
 package br.com.wanessacamara.estoque.service;
 
+import br.com.wanessacamara.estoque.model.RelatorioVendas;
 import br.com.wanessacamara.estoque.model.Venda;
 import br.com.wanessacamara.estoque.repository.ClienteRepository;
 import br.com.wanessacamara.estoque.repository.VendaRepository;
@@ -51,4 +52,6 @@ public class VendaService {
             workbook.close();
         }
     }
+
+
 }
