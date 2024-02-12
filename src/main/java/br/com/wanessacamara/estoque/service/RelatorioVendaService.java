@@ -16,6 +16,9 @@ public class RelatorioVendaService {
     @Autowired
     private VendaRepository vendaRepository;
 
+    @Autowired
+    private ProdutoService produtoService;
+
     public RelatorioVendas gerarRelatorioVendasPorMes(int ano, int mes) {
         // Cria uma instância do Calendar e define o mês e ano fornecidos
         Calendar cal = Calendar.getInstance();
@@ -37,14 +40,23 @@ public class RelatorioVendaService {
 
         // Iterar sobre as vendas do mês para preencher as informações do relatório
         for (Venda venda : vendasDoMes) {
+            Long codigoProduto = (long) venda.getCodigoProduto();
+
+            // Obter o nome do produto com base no código
+            String nomeProduto = produtoService.obterNomeProdutoPorCodigo(codigoProduto);
+
             // Atualizar a quantidade total vendida
             quantidadeTotalVendida += venda.getQuantidade();
 
-
             // Atualizar a lista de produtos vendidos
-            int codigoProduto = venda.getCodigoProduto();
-            produtosVendidosMap.putIfAbsent(codigoProduto, new ProdutoVendido(codigoProduto));
+            produtosVendidosMap.putIfAbsent(Math.toIntExact(codigoProduto), new ProdutoVendido(Math.toIntExact(codigoProduto)));
             ProdutoVendido produtoVendido = produtosVendidosMap.get(codigoProduto);
+            if (produtoVendido == null) {
+                produtoVendido = new ProdutoVendido(Math.toIntExact(codigoProduto));
+                produtosVendidosMap.put(Math.toIntExact(codigoProduto), produtoVendido);
+            }
+            produtoVendido.setNome(nomeProduto); // Definir o nome do produto
+
             produtoVendido.aumentarQuantidade(venda.getQuantidade());
 
             // Adicionar detalhes da compra

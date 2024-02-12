@@ -72,7 +72,8 @@ public class ProdutoService {
             Produto produto = produtoOptional.get();
             return produto.getNomeProduto();
         } else {
-            return null; //
+            // Se o produto com o código especificado não for encontrado, retornar null
+            return null;
         }
     }
 }
