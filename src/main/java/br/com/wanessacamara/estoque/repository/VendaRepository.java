@@ -23,6 +23,7 @@ public interface VendaRepository extends JpaRepository<Venda, Long> {
         return findByDataCompraBetween(primeiroDia, ultimoDia);
     }
 
+  
     List<Venda> findByCpf(String cpf);
 }
 

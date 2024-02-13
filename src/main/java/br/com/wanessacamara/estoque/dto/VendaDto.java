@@ -2,18 +2,18 @@ package br.com.wanessacamara.estoque.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class VendaDto {
-    private Long id;
+
 
     private int codigoProduto;
-
-    private String cpf;
 
     private int quantidade;
 
@@ -23,6 +23,5 @@ public class VendaDto {
 
 
 
-    public VendaDto(int codigoProduto, int quantidade, Date dataCompra) {
-    }
+
 }

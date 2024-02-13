@@ -2,6 +2,7 @@ package br.com.wanessacamara.estoque.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
 @Table(name = "venda")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +28,6 @@ public class Venda {
     @Column(name = "data_compra")
     private Date dataCompra;
 
+    public Venda(int codigoProduto, int quantidade, Date dataCompra) {
+    }
 }

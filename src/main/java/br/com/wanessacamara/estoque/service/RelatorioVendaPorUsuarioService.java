@@ -6,6 +6,7 @@ import br.com.wanessacamara.estoque.dto.RelatorioVendaPorUsuarioDto;
 import br.com.wanessacamara.estoque.dto.VendaDto;
 import br.com.wanessacamara.estoque.exception.UsuarioNotFoundException;
 import br.com.wanessacamara.estoque.model.Cliente;
+import br.com.wanessacamara.estoque.model.RelatorioVendaPorUsuario;
 import br.com.wanessacamara.estoque.model.Venda;
 import br.com.wanessacamara.estoque.repository.ClienteRepository;
 import br.com.wanessacamara.estoque.repository.VendaRepository;
@@ -41,8 +42,11 @@ public class RelatorioVendaPorUsuarioService {
         System.out.println("Dados do cliente antes de criar o DTO: " + cliente.toString()); // Adicionando log
 
         EnderecoDto endereco = viaCepService.buscarEndereco(cliente.getCep());
+// Adiciona aspas duplas ao CPF
+        String cpfComAspas = "\"" + cpf + "\"";
 
-        List<Venda> vendas = vendaRepository.findByCpf(cpf);
+        // Busca as vendas pelo CPF com aspas
+        List<Venda> vendas = vendaRepository.findByCpf(cpfComAspas);
         List<VendaDto> vendasDto = vendas.stream()
                 .map(venda -> new VendaDto(venda.getCodigoProduto(), venda.getQuantidade(), venda.getDataCompra()))
                 .collect(Collectors.toList());

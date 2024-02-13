@@ -2,7 +2,9 @@ package br.com.wanessacamara.estoque.assembly;
 
 import br.com.wanessacamara.estoque.dto.DetalheCompraDto;
 import br.com.wanessacamara.estoque.model.DetalheCompra;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DetalheCompraAssembly {
     public DetalheCompra converterParaEntity(DetalheCompraDto dto){
         DetalheCompra entity = new DetalheCompra();
