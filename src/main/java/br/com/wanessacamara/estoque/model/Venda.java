@@ -18,7 +18,7 @@ public class Venda {
     private int codigoProduto;
 
     @Column(name = "cpf_usuario")
-    private String cpfUsuario;
+    private String cpf;
 
     private int quantidade;
 

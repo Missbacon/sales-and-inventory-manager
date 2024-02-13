@@ -1,6 +1,5 @@
 package br.com.wanessacamara.estoque.service;
 
-import br.com.wanessacamara.estoque.model.RelatorioVendas;
 import br.com.wanessacamara.estoque.model.Venda;
 import br.com.wanessacamara.estoque.repository.ClienteRepository;
 import br.com.wanessacamara.estoque.repository.VendaRepository;
@@ -40,7 +39,7 @@ public class VendaService {
 
                 Venda venda = new Venda();
                 venda.setCodigoProduto((int) currentRow.getCell(0).getNumericCellValue());
-                venda.setCpfUsuario(currentRow.getCell(1).getStringCellValue());
+                venda.setCpf(currentRow.getCell(1).getStringCellValue());
                 venda.setQuantidade((int) currentRow.getCell(2).getNumericCellValue());
                 venda.setDataCompra(currentRow.getCell(3).getDateCellValue());
 

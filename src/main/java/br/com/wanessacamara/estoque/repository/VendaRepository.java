@@ -22,5 +22,7 @@ public interface VendaRepository extends JpaRepository<Venda, Long> {
         // Chama o método findByDataCompraBetween com os parâmetros calculados
         return findByDataCompraBetween(primeiroDia, ultimoDia);
     }
+
+    List<Venda> findByCpf(String cpf);
 }
 

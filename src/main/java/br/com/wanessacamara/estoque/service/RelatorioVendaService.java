@@ -57,10 +57,10 @@ public class RelatorioVendaService {
             }
             produtoVendido.setNome(nomeProduto); // Definir o nome do produto
 
-            produtoVendido.aumentarQuantidade(venda.getQuantidade());
+            produtoVendido.setQuantidade(venda.getQuantidade());
 
             // Adicionar detalhes da compra
-            detalhesCompras.add(new DetalheCompra(venda.getCpfUsuario(), venda.getDataCompra(), venda.getQuantidade()));
+            detalhesCompras.add(new DetalheCompra(venda.getCpf(), venda.getDataCompra(), venda.getQuantidade()));
         }
 
         // Converter o mapa de produtos vendidos em uma lista
