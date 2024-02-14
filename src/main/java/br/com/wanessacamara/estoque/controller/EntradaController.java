@@ -27,13 +27,15 @@ public class EntradaController {
     public ResponseEntity<?> registrarProdutoMes(@PathVariable Long produtoId, @RequestParam int quantidade, @RequestParam int mes, @RequestParam int ano) {
         Produto produtoExistente = produtoService.buscarProdutoPorId(produtoId);
         if (produtoExistente == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente com o ID " + produtoId + " não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto com o ID " + produtoId + " não encontrado");
         }
+        int codigoProduto = Math.toIntExact(produtoExistente.getCodigo());
 
         Entrada entradaProduto = new Entrada();
-        entradaProduto.setQuantidade(quantidade);
+        entradaProduto.setQuantidadeEntrada(quantidade);
         entradaProduto.setMes(mes);
         entradaProduto.setAno(ano);
+        entradaProduto.setCodigoProduto(codigoProduto);
         repository.save(entradaProduto);
 
         return ResponseEntity.ok(entradaProduto);

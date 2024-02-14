@@ -16,9 +16,10 @@ public class Entrada {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY )
         private Long id;
-        private Integer quantidade;
+        private Integer quantidadeEntrada;
         private Integer mes;
         private Integer ano;
+        private int codigoProduto;
 
 
 

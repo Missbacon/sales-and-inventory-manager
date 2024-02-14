@@ -1,5 +1,6 @@
 package br.com.wanessacamara.estoque.dto;
 
+import br.com.wanessacamara.estoque.enums.StatusRelatorio;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +19,6 @@ public class VendaDto {
     private int quantidade;
 
     private Date dataCompra;
-
-
-
 
 
 

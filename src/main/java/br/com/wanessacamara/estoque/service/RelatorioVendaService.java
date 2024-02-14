@@ -1,5 +1,6 @@
 package br.com.wanessacamara.estoque.service;
 
+import br.com.wanessacamara.estoque.enums.StatusRelatorio;
 import br.com.wanessacamara.estoque.model.DetalheCompra;
 import br.com.wanessacamara.estoque.model.ProdutoVendido;
 import br.com.wanessacamara.estoque.model.RelatorioVendas;
@@ -19,6 +20,9 @@ public class RelatorioVendaService {
     @Autowired
     private ProdutoService produtoService;
 
+    @Autowired
+    private EntradaService entradaService;
+
     public RelatorioVendas gerarRelatorioVendasPorMes(int ano, int mes) {
         // Cria uma instância do Calendar e define o mês e ano fornecidos
         Calendar cal = Calendar.getInstance();
@@ -35,45 +39,57 @@ public class RelatorioVendaService {
 
         // Inicializar estruturas de dados para armazenar as informações do relatório
         Map<Integer, ProdutoVendido> produtosVendidosMap = new HashMap<>();
-        int quantidadeTotalVendida = 0;
-        List<DetalheCompra> detalhesCompras = new ArrayList<>();
 
-        // Iterar sobre as vendas do mês para preencher as informações do relatório
+// Iterar sobre as vendas do mês para preencher as informações do relatório
         for (Venda venda : vendasDoMes) {
-            Long codigoProduto = (long) venda.getCodigoProduto();
+            int codigo = (int) venda.getCodigoProduto();
 
             // Obter o nome do produto com base no código
-            String nomeProduto = produtoService.obterNomeProdutoPorCodigo(codigoProduto);
+            String nomeProduto = produtoService.obterNomeProdutoPorCodigo(codigo);
 
-            // Atualizar a quantidade total vendida
-            quantidadeTotalVendida += venda.getQuantidade();
+            // Inicializar a lista de detalhes de compra apenas para o produto atual
+            List<DetalheCompra> detalhesCompras = new ArrayList<>();
 
             // Atualizar a lista de produtos vendidos
-            produtosVendidosMap.putIfAbsent(Math.toIntExact(codigoProduto), new ProdutoVendido(Math.toIntExact(codigoProduto)));
-            ProdutoVendido produtoVendido = produtosVendidosMap.get(codigoProduto);
-            if (produtoVendido == null) {
-                produtoVendido = new ProdutoVendido(Math.toIntExact(codigoProduto));
-                produtosVendidosMap.put(Math.toIntExact(codigoProduto), produtoVendido);
-            }
+            produtosVendidosMap.putIfAbsent(codigo, new ProdutoVendido(codigo));
+            ProdutoVendido produtoVendido = produtosVendidosMap.get(codigo);
             produtoVendido.setNome(nomeProduto); // Definir o nome do produto
 
-            produtoVendido.setQuantidade(venda.getQuantidade());
-
-            // Adicionar detalhes da compra
+            // Adicionar detalhes da compra apenas para o produto atual
             detalhesCompras.add(new DetalheCompra(venda.getCpf(), venda.getDataCompra(), venda.getQuantidade()));
+            produtoVendido.setDetalhesCompras(detalhesCompras);
+
+            // Definir a quantidade total apenas para o produto atual
+            produtoVendido.setQuantidadeTotal(venda.getQuantidade());
+
+
+            int totalDisponivel = entradaService.calcularTotalEntradasPorMesEProduto(mes, ano, codigo);
+            double limiteInferior = totalDisponivel * 0.25; // 25% do total disponível
+
+            if (produtoVendido.getQuantidadeTotal() > totalDisponivel) {
+                produtoVendido.setStatusRelatorio(StatusRelatorio.QTD_DIVERGENTE);
+            } else if (produtoVendido.getQuantidadeTotal() == totalDisponivel) {
+                produtoVendido.setStatusRelatorio(StatusRelatorio.OK);
+            } else if (produtoVendido.getQuantidadeTotal() >= limiteInferior && produtoVendido.getQuantidadeTotal() < totalDisponivel) {
+                produtoVendido.setStatusRelatorio(StatusRelatorio.OK);
+            } else if (produtoVendido.getQuantidadeTotal() < limiteInferior) {
+                produtoVendido.setStatusRelatorio(StatusRelatorio.BAIXA_DEMANDA);
+            }
         }
 
-        // Converter o mapa de produtos vendidos em uma lista
+// Converter o mapa de produtos vendidos em uma lista
         List<ProdutoVendido> produtosVendidos = new ArrayList<>(produtosVendidosMap.values());
 
-        // Criar o objeto RelatorioVendas com as informações coletadas
+// Criar o objeto RelatorioVendas com as informações coletadas
         RelatorioVendas relatorio = new RelatorioVendas();
         relatorio.setProdutosVendidos(produtosVendidos);
-        relatorio.setQuantidadeTotalVendida(quantidadeTotalVendida);
-        relatorio.setDetalhesCompras(detalhesCompras);
 
         return relatorio;
-    }
+
+
+        }
+
+
 }
 
 

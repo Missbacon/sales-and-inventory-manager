@@ -11,8 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 public class RelatorioVendas {
     private List<ProdutoVendido> produtosVendidos;
-    private int quantidadeTotalVendida;
-    private List<DetalheCompra> detalhesCompras;
 
     public RelatorioVendas() {
 

@@ -16,8 +16,8 @@ public class EntradaAssembly {
         entity.setId(dto.getIdEntrada());
         entity.setMes(dto.getMes());
         entity.setAno(dto.getAno());
-        entity.setQuantidade(dto.getQuantidadeEntrada());
-        //entity.setProduto(dto.getProduto());
+        entity.setQuantidadeEntrada(dto.getQuantidadeEntrada());
+        entity.setCodigoProduto(dto.getCodigoProduto());
         return entity;
     }
 
@@ -27,8 +27,8 @@ public class EntradaAssembly {
         dto.setIdEntrada(entity.getId());
         dto.setMes(entity.getMes());
         dto.setAno(entity.getAno());
-        dto.setQuantidadeEntrada(entity.getQuantidade());
-       // dto.setProduto(entity.getProduto());
+        dto.setQuantidadeEntrada(entity.getQuantidadeEntrada());
+       dto.setCodigoProduto(entity.getCodigoProduto());
         return dto;
     }
 

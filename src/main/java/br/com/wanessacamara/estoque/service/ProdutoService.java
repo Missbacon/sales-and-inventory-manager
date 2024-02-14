@@ -66,8 +66,8 @@ public class ProdutoService {
         return repository.save(produto);
     }
 
-    public String obterNomeProdutoPorCodigo(Long codigoProduto) {
-        Optional<Produto> produtoOptional = repository.findById(codigoProduto);
+    public String obterNomeProdutoPorCodigo(int codigoProduto) {
+        Optional<Produto> produtoOptional = repository.findById((long) codigoProduto);
         if (produtoOptional.isPresent()) {
             Produto produto = produtoOptional.get();
             return produto.getNomeProduto();

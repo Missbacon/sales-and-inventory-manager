@@ -18,4 +18,6 @@ public class EntradaDto {
 
     private Integer ano;
 
+    private int codigoProduto;
+
 }
