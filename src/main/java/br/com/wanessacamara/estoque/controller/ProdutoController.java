@@ -29,13 +29,13 @@ public class ProdutoController {
     private ProdutoRepository repository;
 
 
-    @PostMapping (value = "/cadastrar")
+    @PostMapping
     public ResponseEntity<ProdutoDto> cadastraProduto(@RequestBody ProdutoDto produto) {
         produto = assembly.converterParaDto(service.cadastraProduto(assembly.converterParaEntity(produto)));
         return ResponseEntity.ok(produto);
     }
 
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> buscarProdutoPorId(@PathVariable Long id) {
         Produto produto = service.buscarProdutoPorId(id);
         if (produto== null) {
@@ -49,7 +49,7 @@ public class ProdutoController {
         return ResponseEntity.ok(assembly.converterParaDto(service.devolveProdutos()));
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> atualizarProduto(@PathVariable Long id, @RequestBody ProdutoDto produtoDto) {
 
         Produto produtoExistente = service.buscarProdutoPorId(id);
@@ -64,7 +64,7 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoExistente);
     }
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarProduto(@PathVariable Long id) {
 
         Produto produtoExistente = service.buscarProdutoPorId(id);

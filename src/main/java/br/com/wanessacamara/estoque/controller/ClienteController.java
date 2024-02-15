@@ -21,7 +21,7 @@ public class ClienteController {
     private ClienteAssembly assembly;
 
 
-    @PostMapping("/cadastrar")
+    @PostMapping
     public ResponseEntity<ClienteDto> cadastrarCliente(@RequestBody ClienteDto cliente) {
         cliente = assembly.converterParaDto(service.cadastraCliente(assembly.converterParaEntity(cliente)));
         return ResponseEntity.ok(cliente);
@@ -36,7 +36,7 @@ public class ClienteController {
         return ResponseEntity.ok(cliente);
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> atualizarCliente(@PathVariable Long id, @RequestBody ClienteDto clienteDto) {
 
         Cliente clienteExistente = service.buscarClientePorId(id);
@@ -50,7 +50,7 @@ public class ClienteController {
 
         return ResponseEntity.ok(clienteExistente);
     }
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deletarCliente(@PathVariable Long id) {
 
         Cliente clienteExistente = service.buscarClientePorId(id);
