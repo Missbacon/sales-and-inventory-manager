@@ -16,16 +16,15 @@ public class ClienteService {
     public List<Cliente> devolveClientes(){
         return repository.findAll();
     }
-
+    @Transactional
     public Cliente cadastraCliente(Cliente cliente) {
         return repository.save(cliente);
     }
-
+    @Transactional
     public void atualizarCliente(Cliente cliente) {
         repository.save(cliente);
     }
-
-
+    @Transactional
     public Cliente buscarClientePorId(Long id) {
         Optional<Cliente> clienteOptional = repository.findById(id);
         return clienteOptional.orElse(null);

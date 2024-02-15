@@ -1,14 +1,11 @@
 package br.com.wanessacamara.estoque.controller;
 
 import br.com.wanessacamara.estoque.assembly.ProdutoAssembly;
-import br.com.wanessacamara.estoque.dto.ClienteDto;
 import br.com.wanessacamara.estoque.dto.ProdutoDto;
-import br.com.wanessacamara.estoque.model.Cliente;
 import br.com.wanessacamara.estoque.model.Produto;
 import br.com.wanessacamara.estoque.repository.ProdutoRepository;
 import br.com.wanessacamara.estoque.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

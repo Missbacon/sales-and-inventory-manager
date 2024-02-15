@@ -13,9 +13,9 @@ import java.util.Date;
 public class DetalheCompra {
  
         private String cpf;
+
         private Date dataCompra;
+
         private int quantidade;
-
-
 }
 

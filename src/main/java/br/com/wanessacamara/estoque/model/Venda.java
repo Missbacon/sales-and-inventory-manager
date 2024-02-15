@@ -9,12 +9,12 @@ import lombok.Setter;
 
 import java.util.Date;
 @Entity
-@Table(name = "venda")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Venda {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -2,12 +2,7 @@ package br.com.wanessacamara.estoque.assembly;
 
 import br.com.wanessacamara.estoque.dto.VendaDto;
 import br.com.wanessacamara.estoque.model.Venda;
-import jakarta.persistence.Column;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 @Component
 public class VendaAssembly {
     public Venda converterParaEntity (VendaDto dto){

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.List;
 
 @Getter
@@ -15,10 +14,12 @@ import java.util.List;
 public class ProdutoVendido {
 
     private String nome;
-    private List<DetalheCompra> detalhesCompras;
-    private Integer quantidadeTotal;
-    private StatusRelatorio statusRelatorio;
 
+    private List<DetalheCompra> detalhesCompras;
+
+    private Integer quantidadeTotal;
+
+    private StatusRelatorio statusRelatorio;
 
     public ProdutoVendido(int intExact) {
     }

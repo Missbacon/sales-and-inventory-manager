@@ -12,7 +12,10 @@ import lombok.Setter;
 public class EnderecoDto {
 
     private String logradouro;
+
     private String bairro;
+
     private String localidade;
+
     private String uf;
 }

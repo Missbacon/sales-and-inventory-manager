@@ -2,16 +2,13 @@ package br.com.wanessacamara.estoque.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "cliente")
 @Getter
 @Setter
 public class Cliente {
@@ -26,7 +23,6 @@ public class Cliente {
 
     @NotEmpty(message = "Cliente deve conter um nome")
     private String nome;
-
 
     private Date dataDeNascimento;
 

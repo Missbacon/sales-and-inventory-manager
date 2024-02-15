@@ -6,7 +6,6 @@ import br.com.wanessacamara.estoque.dto.RelatorioVendaPorUsuarioDto;
 import br.com.wanessacamara.estoque.dto.VendaDto;
 import br.com.wanessacamara.estoque.exception.UsuarioNotFoundException;
 import br.com.wanessacamara.estoque.model.Cliente;
-import br.com.wanessacamara.estoque.model.RelatorioVendaPorUsuario;
 import br.com.wanessacamara.estoque.model.Venda;
 import br.com.wanessacamara.estoque.repository.ClienteRepository;
 import br.com.wanessacamara.estoque.repository.VendaRepository;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,19 +37,17 @@ public class RelatorioVendaPorUsuarioService {
         }
 
         Cliente cliente = clienteOptional.get();
-        System.out.println("Dados do cliente antes de criar o DTO: " + cliente.toString()); // Adicionando log
+        System.out.println("Dados do cliente antes de criar o DTO: " + cliente.toString());
 
         EnderecoDto endereco = viaCepService.buscarEndereco(cliente.getCep());
-// Adiciona aspas duplas ao CPF
         String cpfComAspas = "\"" + cpf + "\"";
 
-        // Busca as vendas pelo CPF com aspas
         List<Venda> vendas = vendaRepository.findByCpf(cpfComAspas);
         List<VendaDto> vendasDto = vendas.stream()
                 .map(venda -> new VendaDto(venda.getCodigoProduto(), venda.getQuantidade(), venda.getDataCompra()))
                 .collect(Collectors.toList());
 
-        System.out.println("Dados do endereço: " + endereco.toString()); // Adicionando log
+        System.out.println("Dados do endereço: " + endereco.toString());
 
         return new RelatorioVendaPorUsuarioDto(new ClienteDto(cliente.getNome(), cliente.getDataDeNascimento(), cliente.getCpf(), cliente.getCep()), endereco, vendasDto);
     }

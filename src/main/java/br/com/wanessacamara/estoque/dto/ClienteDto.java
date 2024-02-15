@@ -1,6 +1,5 @@
 package br.com.wanessacamara.estoque.dto;
 
-import br.com.wanessacamara.estoque.model.Cliente;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class ClienteDto {
 
-
     private String nome;
 
     private Date dataDeNascimento;
@@ -22,8 +20,4 @@ public class ClienteDto {
     private String cpf;
 
     private String cep;
-
-
-    public ClienteDto(Cliente cliente) {
-    }
 }

@@ -13,10 +13,8 @@ public class RelatorioVendasController {
 
     @Autowired
     private RelatorioVendaService relatorioVendaService;
-
     @GetMapping("/relatorio-vendas")
     public RelatorioVendas consultarRelatorioVendas(@RequestParam("ano") int ano, @RequestParam("mes") int mes) {
-        // Aqui você chama o serviço para processar os dados e gerar o relatório de vendas
         RelatorioVendas relatorio = relatorioVendaService.gerarRelatorioVendasPorMes(ano, mes);
         return relatorio;
     }

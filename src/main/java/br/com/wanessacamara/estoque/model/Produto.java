@@ -6,12 +6,11 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
-@Table(name = "produto")
 @Getter
 @Setter
 public class Produto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +23,4 @@ public class Produto {
 
     @NotNull
     private Double preco;
-
-
 }

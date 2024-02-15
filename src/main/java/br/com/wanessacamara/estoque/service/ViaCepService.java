@@ -7,16 +7,14 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ViaCepService {
 
+    private final RestTemplate restTemplate;
 
-        private final RestTemplate restTemplate;
-
-        public ViaCepService(RestTemplate restTemplate) {
+    public ViaCepService(RestTemplate restTemplate) {
             this.restTemplate = restTemplate;
         }
-
         public EnderecoDto buscarEndereco(String cep) {
-            String url = "https://viacep.com.br/ws/" + cep + "/json/";
-            return restTemplate.getForObject(url, EnderecoDto.class);
-        }
+        String url = "https://viacep.com.br/ws/" + cep + "/json/";
+        return restTemplate.getForObject(url, EnderecoDto.class);
     }
+}
 

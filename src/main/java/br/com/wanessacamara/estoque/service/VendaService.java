@@ -34,7 +34,7 @@ public class VendaService {
             while (iterator.hasNext()) {
                 Row currentRow = iterator.next();
                 if (currentRow.getRowNum() == 0) {
-                    continue; // Pula a linha do cabeçalho
+                    continue;
                 }
 
                 Venda venda = new Venda();
@@ -51,6 +51,4 @@ public class VendaService {
             workbook.close();
         }
     }
-
-
 }

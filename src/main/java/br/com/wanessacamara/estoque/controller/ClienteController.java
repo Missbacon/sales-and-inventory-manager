@@ -60,7 +60,7 @@ public class ClienteController {
 
         service.deletarCliente(clienteExistente);
 
-        return ResponseEntity.ok(clienteExistente);
+        return ResponseEntity.ok("Cliente com o ID: " + id + " DELETADO com sucesso!");
     }
 }
 

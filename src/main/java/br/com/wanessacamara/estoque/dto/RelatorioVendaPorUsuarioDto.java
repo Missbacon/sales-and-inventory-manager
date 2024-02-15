@@ -12,7 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RelatorioVendaPorUsuarioDto {
+
     private ClienteDto cliente;
+
     private EnderecoDto endereco;
+
     private List<VendaDto> vendas;
 }

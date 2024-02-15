@@ -13,8 +13,12 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DetalheCompraDto {
+
     private String cpf;
+
     private Date dataCompra;
+
     private int quantidade;
+
     private StatusRelatorio status;
 }
