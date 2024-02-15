@@ -80,7 +80,7 @@ O objetivo deste desafio é construir uma api de controle de estoque e vendas.
 
 * Desejavel 
 
-  - Swagger
+  - Swagger - Realizado atraves do OpenAPI 3.0  (http://localhost:8080/swagger-ui/index.html)
   - JUnit 
 
 ###  Tecnologias
